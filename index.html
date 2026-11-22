@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111827">
+  <title>SkillSprout — Learning Roadmap</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" aria-label="SkillSprout home">
+        <span class="brand-mark">S</span>
+        <span>Skill<span>Sprout</span></span>
+      </a>
+
+      <nav class="side-nav" aria-label="Main navigation">
+        <button class="nav-item active" data-view="dashboard">
+          <span class="nav-icon">⌂</span><span>Dashboard</span>
+        </button>
+        <button class="nav-item" data-view="roadmap">
+          <span class="nav-icon">↗</span><span>My Roadmap</span>
+        </button>
+        <button class="nav-item" data-view="catalog">
+          <span class="nav-icon">▦</span><span>Course Catalog</span>
+        </button>
+        <button class="nav-item" data-view="groups">
+          <span class="nav-icon">◎</span><span>Study Groups</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <button class="nav-item" id="profileButton">
+          <span class="avatar">AK</span>
+          <span class="profile-copy"><strong id="studentName">Alex Kumar</strong><small id="studentBranch">CSE · 1st Year</small></span>
+          <span class="chevron">›</span>
+        </button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="icon-button menu-button" id="menuButton" aria-label="Toggle menu">☰</button>
+        <div class="topbar-actions">
+          <button class="icon-button" id="notificationButton" aria-label="Notifications">♢<span class="notification-dot"></span></button>
+          <button class="profile-avatar" id="topProfileButton" aria-label="Open profile">AK</button>
+        </div>
+      </header>
+
+      <section id="dashboardView" class="view active">
+        <div class="page-heading">
+          <div>
+            <p class="eyebrow">MONDAY, 19 OCTOBER</p>
+            <h1>Good morning, <span id="greetingName">Alex</span></h1>
+          </div>
+          <button class="primary-button" id="editProfileButton"><span>＋</span> Update profile</button>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat-card">
+            <div class="stat-icon mint">◷</div>
+            <div><p>Credits completed</p><strong><span id="creditsCompleted">0</span> <small>/ <span id="totalCredits">24</span></small></strong></div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-icon peach">↗</div>
+            <div><p>Courses enrolled</p><strong id="enrolledCount">0</strong></div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-icon blue">◎</div>
+            <div><p>Weekly study hours</p><strong><span id="studyHours">0</span> <small>hrs</small></strong></div>
+          </article>
+        </div>
+
+        <div class="dashboard-grid">
+          <section class="panel roadmap-panel">
+            <div class="panel-header">
+              <div><p class="panel-kicker">CURRENT JOURNEY</p><h2>Semester Roadmap</h2></div>
+              <button class="text-button" data-view-link="roadmap">View all <span>→</span></button>
+            </div>
+            <div class="semester-tabs" id="semesterTabs"></div>
+            <div class="current-roadmap" id="dashboardRoadmap"></div>
+          </section>
+
+          <aside class="panel progress-panel">
+            <div class="panel-header"><div><p class="panel-kicker">THIS SEMESTER</p><h2>Progress</h2></div></div>
+            <div class="progress-ring-wrap">
+              <div class="progress-ring" id="progressRing" style="--progress:0deg">
+                <div><strong id="progressPercent">0%</strong><span>complete</span></div>
+              </div>
+            </div>
+            <div class="progress-details">
+              <div><span>Courses</span><strong id="courseProgress">0 / 0</strong></div>
+              <div><span>Credits</span><strong id="creditProgress">0 / 0</strong></div>
+            </div>
+          </aside>
+        </div>
+
+        <section class="panel recommendations-panel">
+          <div class="panel-header">
+            <div><p class="panel-kicker">BASED ON YOUR GOALS</p><h2>Recommended for you</h2></div>
+            <button class="text-button" data-view-link="catalog">Browse catalog <span>→</span></button>
+          </div>
+          <div class="course-grid" id="recommendations"></div>
+        </section>
+      </section>
+
+      <section id="roadmapView" class="view">
+        <div class="page-heading"><div><p class="eyebrow">ACADEMIC PLAN</p><h1>My Roadmap</h1></div><button class="secondary-button" id="exportRoadmap">↓ Export PDF</button></div>
+        <div class="roadmap-toolbar">
+          <div class="semester-tabs" id="fullSemesterTabs"></div>
+        </div>
+        <div class="timeline" id="fullRoadmap"></div>
+      </section>
+
+      <section id="catalogView" class="view">
+        <div class="page-heading"><div><p class="eyebrow">EXPLORE LEARNING</p><h1>Course Catalog</h1></div></div>
+        <div class="catalog-toolbar">
+          <label class="search-box"><span>⌕</span><input id="courseSearch" type="search" placeholder="Search code, title or skill..."><kbd>⌘ K</kbd></label>
+          <select id="difficultyFilter" class="filter-select" aria-label="Filter by difficulty"><option value="all">All difficulties</option><option value="Beginner">Beginner</option><option value="Intermediate">Intermediate</option><option value="Advanced">Advanced</option></select>
+        </div>
+        <div class="catalog-meta"><span id="catalogCount">0 courses</span></div>
+        <div class="course-grid catalog-grid" id="catalogGrid"></div>
+      </section>
+
+      <section id="groupsView" class="view">
+        <div class="page-heading"><div><p class="eyebrow">LEARN TOGETHER</p><h1>Study Groups</h1></div></div>
+        <div class="groups-grid" id="groupsGrid"></div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="onboardingModal" role="dialog" aria-modal="true" aria-labelledby="intakeTitle">
+    <div class="modal">
+      <div class="modal-header"><div class="brand-mark large">S</div><button class="icon-button" id="closeModal" aria-label="Close">×</button></div>
+      <div class="step-indicator"><span class="active"></span><span></span><span></span></div>
+      <form id="intakeForm">
+        <div class="intake-step active" data-step="1">
+          <p class="modal-kicker">LET'S PERSONALIZE YOUR JOURNEY</p>
+          <h2 id="intakeTitle">Tell us about yourself</h2>
+          <p class="modal-subtitle">We’ll build a roadmap around your background.</p>
+          <label>Full name<input name="name" id="intakeName" value="Alex Kumar" required></label>
+          <div class="form-row">
+            <label>Branch<select name="branch" id="intakeBranch"><option>CSE</option><option>IT</option><option>ECE</option><option>Mechanical</option><option>Civil</option></select></label>
+            <label>Current semester<select name="semester" id="intakeSemester"><option>1st Semester</option><option>2nd Semester</option></select></label>
+          </div>
+          <button type="button" class="primary-button full next-step">Continue <span>→</span></button>
+        </div>
+        <div class="intake-step" data-step="2">
+          <p class="modal-kicker">YOUR EXPERIENCE</p>
+          <h2>How familiar are you with coding?</h2>
+          <p class="modal-subtitle">Choose the option that feels most accurate.</p>
+          <div class="choice-grid" id="experienceChoices">
+            <label class="choice-card"><input type="radio" name="experience" value="Beginner" checked><span class="choice-icon">A</span><strong>Just starting</strong><small>No prior coding experience</small></label>
+            <label class="choice-card"><input type="radio" name="experience" value="Intermediate"><span class="choice-icon">{ }</span><strong>Some knowledge</strong><small>Basic languages or small projects</small></label>
+            <label class="choice-card"><input type="radio" name="experience" value="Advanced"><span class="choice-icon">&lt;/&gt;</span><strong>Comfortable</strong><small>Regular coding and projects</small></label>
+          </div>
+          <div class="modal-actions"><button type="button" class="secondary-button prev-step">Back</button><button type="button" class="primary-button next-step">Continue <span>→</span></button></div>
+        </div>
+        <div class="intake-step" data-step="3">
+          <p class="modal-kicker">YOUR DIRECTION</p>
+          <h2>What are you aiming for?</h2>
+          <p class="modal-subtitle">We'll recommend courses aligned with this goal.</p>
+          <div class="choice-grid career-grid" id="careerChoices">
+            <label class="choice-card"><input type="radio" name="career" value="Full-Stack Web" checked><span class="choice-icon">◫</span><strong>Full-Stack Web</strong><small>Build complete web products</small></label>
+            <label class="choice-card"><input type="radio" name="career" value="Data Science"><span class="choice-icon">⌁</span><strong>Data Science</strong><small>Turn data into decisions</small></label>
+            <label class="choice-card"><input type="radio" name="career" value="AI / ML"><span class="choice-icon">✦</span><strong>AI / ML</strong><small>Create intelligent systems</small></label>
+            <label class="choice-card"><input type="radio" name="career" value="Core Engineering"><span class="choice-icon">⚙</span><strong>Core Engineering</strong><small>Strengthen fundamentals</small></label>
+          </div>
+          <div class="modal-actions"><button type="button" class="secondary-button prev-step">Back</button><button type="submit" class="primary-button">Build my roadmap <span>→</span></button></div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"><span id="toastIcon">✓</span><div><strong id="toastTitle">Success</strong><p id="toastMessage"></p></div></div>
+  <script src="script.js"></script>
+</body>
+</html>
